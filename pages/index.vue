@@ -6,13 +6,46 @@
     <v-content>
       <v-container id="top">
         <v-row>
-          <v-col class="top mb-4">
+          <v-col class="top mb-4" v-resize="onResize">
+            <!-- xs -->
             <v-img
-              src="/portfolio_top.png"
-              width="1100"
-              height="800"
+              :width="logoX * 0.8"
+              :height="logoY * 0.825"
+              class="d-flex d-sm-none d-md-none d-lg-none d-xl-none mx-auto"
               position="center"
-              class="mx-auto"
+              src="/logo_xs.png"
+            ></v-img>
+            <!-- sm -->
+            <v-img
+              :width="logoX * 0.8"
+              :height="logoY * 0.875"
+              class="d-none d-sm-flex d-md-none d-lg-none d-xl-none mx-auto"
+              position="center"
+              src="/logo_xs.png"
+            ></v-img>
+            <!-- md -->
+            <v-img
+              :width="logoX * 0.8"
+              :height="logoY * 0.893"
+              class="d-none d-sm-none d-md-flex d-lg-none d-xl-none mx-auto"
+              position="center"
+              src="/logo.png"
+            ></v-img>
+            <!-- lg -->
+            <v-img
+              :width="logoX * 0.8"
+              :height="logoY * 0.84"
+              class="d-none d-sm-none d-md-none d-lg-flex d-xl-none mx-auto"
+              position="center"
+              src="/logo.png"
+            ></v-img>
+            <!-- xl -->
+            <v-img
+              :width="logoX * 0.8"
+              :height="logoY * 0.91"
+              class="d-none d-sm-none d-md-none d-lg-none d-xl-flex mx-auto"
+              position="center"
+              src="/logo.png"
             ></v-img>
           </v-col>
         </v-row>
@@ -90,7 +123,28 @@ export default {
     TheAbout
   },
   data() {
-    return {};
+    return {
+      windowSize: {
+        x: 0,
+        y: 0
+      }
+    };
+  },
+  methods: {
+    onResize() {
+      this.windowSize = { x: window.innerWidth, y: window.innerHeight };
+    }
+  },
+  mounted() {
+    this.onResize();
+  },
+  computed: {
+    logoX() {
+      return this.windowSize.x;
+    },
+    logoY() {
+      return this.windowSize.y;
+    }
   }
 };
 </script>
