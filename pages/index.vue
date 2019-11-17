@@ -6,46 +6,13 @@
     <v-content>
       <v-container id="top">
         <v-row>
-          <v-col class="top mb-4" v-resize="onResize">
-            <!-- xs -->
+          <v-col class="top" v-resize="onResize">
             <v-img
-              :width="logoX * 0.8"
-              :height="logoY * 0.825"
-              class="d-flex d-sm-none d-md-none d-lg-none d-xl-none mx-auto"
+              :aspect-ratio="logoRatio"
+              :width="logoX"
               position="center"
-              src="/logo_xs.png"
-            ></v-img>
-            <!-- sm -->
-            <v-img
-              :width="logoX * 0.8"
-              :height="logoY * 0.875"
-              class="d-none d-sm-flex d-md-none d-lg-none d-xl-none mx-auto"
-              position="center"
-              src="/logo_xs.png"
-            ></v-img>
-            <!-- md -->
-            <v-img
-              :width="logoX * 0.8"
-              :height="logoY * 0.893"
-              class="d-none d-sm-none d-md-flex d-lg-none d-xl-none mx-auto"
-              position="center"
-              src="/logo.png"
-            ></v-img>
-            <!-- lg -->
-            <v-img
-              :width="logoX * 0.8"
-              :height="logoY * 0.84"
-              class="d-none d-sm-none d-md-none d-lg-flex d-xl-none mx-auto"
-              position="center"
-              src="/logo.png"
-            ></v-img>
-            <!-- xl -->
-            <v-img
-              :width="logoX * 0.8"
-              :height="logoY * 0.91"
-              class="d-none d-sm-none d-md-none d-lg-none d-xl-flex mx-auto"
-              position="center"
-              src="/logo.png"
+              :src="logoSrc"
+              class="mx-auto"
             ></v-img>
           </v-col>
         </v-row>
@@ -140,10 +107,29 @@ export default {
   },
   computed: {
     logoX() {
-      return this.windowSize.x;
+      if (this.windowSize.x < 600) {
+        // return ((this.windowSize.y - 50) / 70) * 39;
+        return 390;
+      } else {
+        return ((this.windowSize.y - 135) / 8) * 11;
+      }
     },
     logoY() {
       return this.windowSize.y;
+    },
+    logoSrc() {
+      if (this.windowSize.x < 600) {
+        return "/logo_xs.png";
+      } else {
+        return "/logo.png";
+      }
+    },
+    logoRatio() {
+      if (this.windowSize.x < 600) {
+        return 39 / 70;
+      } else {
+        return 11 / 8;
+      }
     }
   }
 };
