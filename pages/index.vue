@@ -1,8 +1,6 @@
 <template>
   <div>
-    <!-- <the-drawer /> -->
-    <the-header />
-
+    <Header />
     <v-content>
       <v-container id="top">
         <v-row>
@@ -20,14 +18,14 @@
         <v-row>
           <v-col class="about" id="about">
             <p class="subtitle-1">About</p>
-            <the-about />
+            <About />
           </v-col>
         </v-row>
         <v-divider />
         <v-row>
           <v-col class="skill" id="skill">
             <p class="subtitle-1 mb-0">Skill</p>
-            <the-skill />
+            <Skill />
           </v-col>
         </v-row>
         <v-divider />
@@ -59,7 +57,7 @@
                 >
                   <v-img src="/picsview.png" height="295.233"> </v-img>
                   <v-card-text>
-                    <p class="mb-0">picsView</p>
+                    <p class="mb-0">picsView (現在閲覧不可)</p>
                     <p class="mb-0">Laravel/vue.js/vuex/vue-router/AWS S3</p>
                   </v-card-text>
                 </v-card>
@@ -70,24 +68,22 @@
       </v-container>
     </v-content>
 
-    <the-footer />
+    <Footer />
   </div>
 </template>
 
 <script>
-// import TheDrawer from "../components/TheDrawer";
-import TheHeader from "../components/TheHeader";
-import TheFooter from "../components/TheFooter";
-import TheSkill from "../components/TheSkill";
-import TheAbout from "../components/theAbout";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import Skill from "../components/Skill";
+import About from "../components/About";
 
 export default {
   components: {
-    // TheDrawer,
-    TheHeader,
-    TheFooter,
-    TheSkill,
-    TheAbout
+    Header,
+    Footer,
+    Skill,
+    About
   },
   data() {
     return {

@@ -1,6 +1,6 @@
 <template>
   <v-footer app>
-    <span>&copy; michi-h 2019</span>
+    <span>&copy; michi-h 2022</span>
   </v-footer>
 </template>
 
